@@ -2,7 +2,7 @@ import React from 'react';
 
 export class Header extends React.Component {
     render() {
-      return <h1>TODO:</h1>;
+      return <h1 className="title">TODO:</h1>;
     }
 }
 
@@ -14,10 +14,12 @@ export class List extends React.Component {
         this.state = { tasks: [], new: "" };
     }
     addTask() {
-        this.setState(prevState => ({
-            tasks: [...prevState.tasks, this.state.new],
-            new: ""
-          }))
+        if(this.state.new !== "") {
+            this.setState(prevState => ({
+                tasks: [...prevState.tasks, this.state.new],
+                new: ""
+            }))
+        }
     }
     handleChange(event) {
         this.setState({new: event.target.value});
